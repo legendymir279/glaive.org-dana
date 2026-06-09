@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DANATOTO - Pusat Olahraga Padel Terbaik. Booking lapangan, turnamen, dan komunitas padel nomor 1 di Indonesia.">
+    <meta name="keywords" content="Padel, Danatoto, Olahraga, Raket, Lapangan Padel">
+    <title>DANATOTO | Premium Padel Club</title>
+    <meta name="google-site-verification" content="zThT0p-kXT7F2eTZuKgDjfuE-hhxC5Zny1iuQ2DyXlg" />
+    <!-- Google Fonts: Inter & Oswald for Modern Sporty Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #ccff00; /* Neon Lime - Warna Khas Padel */
+            --primary-dark: #aadd00;
+            --bg-dark: #0a0e17; /* Deep Navy Black */
+            --bg-card: #151b2b;
+            --text-light: #f0f0f0;
+            --text-gray: #a0a0a0;
+            --gradient: linear-gradient(135deg, #ccff00 0%, #00ff9d 100%);
+            --glass: rgba(21, 27, 43, 0.7);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        /* --- HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 14, 23, 0.8);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-cta {
+            padding: 10px 25px;
+            background: var(--primary);
+            color: var(--bg-dark);
+            font-weight: 700;
+            border-radius: 50px;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .btn-cta:hover {
+            background: var(--text-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(204, 255, 0, 0.3);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at center, #1a2336 0%, #0a0e17 100%);
+            overflow: hidden;
+        }
+
+        /* Abstract Background Elements */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: var(--primary);
+            filter: blur(150px);
+            opacity: 0.15;
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-30px, 30px); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        .hero span.highlight {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+
+        /* --- FEATURES / SERVICES --- */
+        .section {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* --- RANKING TABLE (Modern Style) --- */
+        .ranking-section {
+            background: #0f1420;
+        }
+
+        .ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .ranking-table th, .ranking-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .ranking-table th {
+            background: rgba(204, 255, 0, 0.1);
+            color: var(--primary);
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .ranking-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .rank-number {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .player-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #05070a;
+            padding: 60px 5%;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-family: 'Oswald', sans-serif;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .socials {
+            margin: 20px 0;
+        }
+
+        .socials a {
+            margin: 0 10px;
+            color: var(--text-gray);
+            font-size: 1.2rem;
+        }
+
+        .socials a:hover { color: var(--primary); }
+
+        .copyright {
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .nav-links { display: none; } /* Simplified for demo */
+            .menu-toggle { display: block; color: white; }
+            .btn-cta { display: none; }
+            
+            /* Simple mobile menu logic would go here with JS */
+            .mobile-active .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--bg-card);
+                padding: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="brand">DANATOTO</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#facilities">Fasilitas</a></li>
+                <li><a href="#ranking">Ranking</a></li>
+                <li><a href="#events">Turnamen</a></li>
+            </ul>
+        </nav>
+        <a href="#booking" class="btn-cta">BOOK NOW</a>
+        <div class="menu-toggle">☰</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>THE FUTURE OF  <span class="highlight">PADEL SPORT</span></h1>
+            <p>Bergabunglah dengan komunitas padel terbesar di Indonesia. Fasilitas standar internasional, ranking real-time, dan keseruan tanpa batas.</p>
+            <a href="#booking" class="btn-cta" style="display:inline-block; padding: 15px 40px; font-size: 1.1rem;">MAIN SEKARANG</a>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="section">
+        <div class="section-title">
+            <p>MENGAPA DANATOTO?</p>
+            <h2>FASILITAS PREMIUM</h2>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-icon">🎾</div>
+                <h3>Lapangan Pro</h3>
+                <p>10 Lapangan standar World Padel Tour dengan rumput sintetis terbaru dan pencahayaan LED anti-silau.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Smart Ranking</h3>
+                <p>Sistem poin digital terintegrasi. Setiap permainan Anda dihitung untuk naik peringkat di leaderboard DANATOTO.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🏆</div>
+                <h3>Turnamen Mingguan</h3>
+                <p>Kompetisi rutin dengan total hadiah jutaan rupiah setiap bulannya. Cocok untuk pemula hingga pro.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ranking Section -->
+    <section id="ranking" class="section ranking-section">
+        <div class="section-title">
+            <p>LEADERBOARD BULAN INI</p>
+            <h2>TOP PLAYERS</h2>
+        </div>
+        
+        <table class="ranking-table">
+            <thead>
+                <tr>
+                    <th width="10%">RANK</th>
+                    <th>PLAYER NAME</th>
+                    <th>MATCHES</th>
+                    <th>POINTS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="rank-number">#1</td>
+                    <td>
+                        <div class="player-info">
+                            <div class="avatar">AD</div>
+                            <span>Andi Darmawan</span>
+                        </div>
+                    </td>
+                    <td>42</td>
+                    <td style="color: var(--primary); font-weight:bold;">2,450</td>
+                </tr>
+                <tr>
+                    <td class="rank-number">#2</td>
+                    <td>
+                        <div class="player-info">
+                            <div class="avatar">BS</div>
+                            <span>Budi Santoso</span>
+                        </div>
+                    </td>
+                    <td>38</td>
+                    <td style="color: var(--primary); font-weight:bold;">2,310</td>
+                </tr>
+                <tr>
+                    <td class="rank-number">#3</td>
+                    <td>
+                        <div class="player-info">
+                            <div class="avatar">CK</div>
+                            <span>Citra Kirana</span>
+                        </div>
+                    </td>
+                    <td>40</td>
+                    <td style="color: var(--primary); font-weight:bold;">2,100</td>
+                </tr>
+                <tr>
+                    <td class="rank-number">#4</td>
+                    <td>
+                        <div class="player-info">
+                            <div class="avatar">DP</div>
+                            <span>Dimas Pratama</span>
+                        </div>
+                    </td>
+                    <td>35</td>
+                    <td style="color: var(--primary); font-weight:bold;">1,950</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="#" style="color: var(--text-gray); border-bottom: 1px solid var(--primary);">Lihat Semua Ranking →</a>
+        </div>
+    </section>
+
+    <!-- Call to Action / Booking -->
+    <section id="booking" class="section" style="background: linear-gradient(rgba(204,255,0,0.1), rgba(10,14,23,1)); text-align: center;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">SIAP UNTUK BERMAIN?</h2>
+        <p style="margin-bottom: 30px; color: var(--text-gray);">Booking lapangan sekarang dan dapatkan diskon 20% untuk member baru.</p>
+        <a href="#" class="btn-cta" style="padding: 15px 50px; font-size: 1.2rem;">WHATSAPP BOOKING</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">DANATOTO</div>
+        <p style="color: #777; max-width: 500px; margin: 0 auto;">Pusat olahraga padel modern dengan fasilitas terbaik dan komunitas yang solid. Jadilah bagian dari juara.</p>
+        
+        <div class="socials">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">TikTok</a>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2026 DANATOTO Padel Club. All Rights Reserved. Designed for Champions.
+        </div>
+    </footer>
+
+    <!-- Simple Script for Mobile Menu -->
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('mobile-active');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
